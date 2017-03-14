@@ -1,5 +1,6 @@
 require 'pry'
 
+=begin
 @graph = {}
 @graph['start']      = {}
 @graph['start']['a'] = 6
@@ -9,6 +10,21 @@ require 'pry'
 @graph['b']          = {}
 @graph['b']['a']     = 3
 @graph['b']['fin']   = 5
+=end
+
+@graph = {
+  'start' => {
+    'a' => 6,
+    'b' => 2
+  },
+  'a' => {
+    'fin' => 1
+  },
+  'b' => {
+    'a' => 3,
+    'fin' => 5
+  }
+}
 
 @costs = {
   'a' => 6,
