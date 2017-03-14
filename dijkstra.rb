@@ -1,14 +1,14 @@
 require 'pry'
 
 @graph = {}
-graph['start']      = {}
-graph['start']['a'] = 6
-graph['start']['b'] = 2
-graph['a']          = {}
-graph['a']['fin']   = 1
-graph['b']          = {}
-graph['b']['a']     = 3
-graph['b']['fin']   = 5
+@graph['start']      = {}
+@graph['start']['a'] = 6
+@graph['start']['b'] = 2
+@graph['a']          = {}
+@graph['a']['fin']   = 1
+@graph['b']          = {}
+@graph['b']['a']     = 3
+@graph['b']['fin']   = 5
 
 @costs = {
   'a' => 6,
@@ -29,7 +29,6 @@ def find_lowest_cost_node
   lowest_cost_node = nil
   @costs.keys.each do |node|
     cost = @costs[node]
-    binding.pry
     if cost < lowest_cost && !@processed.include?(node)
       lowest_cost = cost
       lowest_cost_node = node
@@ -38,8 +37,8 @@ def find_lowest_cost_node
   lowest_cost_node
 end
 
-node = find_lowest_cost_node(costs)
-while node.length > 0
+node = find_lowest_cost_node
+while node != 'fin'
   cost = @costs[node]
   neighbors = @graph[node]
   neighbors.keys.each do |n|
@@ -50,7 +49,7 @@ while node.length > 0
     end
   end
   @processed << node
-  node = find_lowest_cost_node(costs)
+  node = find_lowest_cost_node
 end
 
 binding.pry
