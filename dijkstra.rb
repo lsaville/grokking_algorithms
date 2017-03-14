@@ -1,3 +1,5 @@
+require 'pry'
+
 graph = {}
 graph['start']      = {}
 graph['start']['a'] = 6
@@ -19,3 +21,22 @@ parents = {
 }
 
 processed = []
+
+node = find_lowest_cost_node(costs)
+while node.length > 0
+  cost = costs[node]
+  neighbors = graph[node]
+  neighbors.keys.each do |n|
+    new_cost = cost + neighbors[n]
+    if costs[n] > new_cost
+      costs[n] = new_cost
+      parents[n] = node
+    end
+  end
+  processed << node
+  node = find_lowest_cost_node(costs)
+end
+
+binding.pry
+
+blah = 2
